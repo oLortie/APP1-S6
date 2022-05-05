@@ -53,10 +53,10 @@ RM = /snap/cmake/1082/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22
+CMAKE_SOURCE_DIR = /home/olivier/Git/APP1-S6/GIF643-Proto-E22
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build
+CMAKE_BINARY_DIR = /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/stb_image.dir/depend.make
@@ -72,16 +72,16 @@ include CMakeFiles/stb_image.dir/flags.make
 CMakeFiles/stb_image.dir/src/stb_image.c.o: CMakeFiles/stb_image.dir/flags.make
 CMakeFiles/stb_image.dir/src/stb_image.c.o: ../src/stb_image.c
 CMakeFiles/stb_image.dir/src/stb_image.c.o: CMakeFiles/stb_image.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/stb_image.dir/src/stb_image.c.o"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/stb_image.dir/src/stb_image.c.o -MF CMakeFiles/stb_image.dir/src/stb_image.c.o.d -o CMakeFiles/stb_image.dir/src/stb_image.c.o -c /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/stb_image.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/olivier/Git/APP1-S6/GIF643-Proto-E22/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/stb_image.dir/src/stb_image.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/stb_image.dir/src/stb_image.c.o -MF CMakeFiles/stb_image.dir/src/stb_image.c.o.d -o CMakeFiles/stb_image.dir/src/stb_image.c.o -c /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/stb_image.c
 
 CMakeFiles/stb_image.dir/src/stb_image.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/stb_image.dir/src/stb_image.c.i"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/stb_image.c > CMakeFiles/stb_image.dir/src/stb_image.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/stb_image.c > CMakeFiles/stb_image.dir/src/stb_image.c.i
 
 CMakeFiles/stb_image.dir/src/stb_image.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/stb_image.dir/src/stb_image.c.s"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/stb_image.c -o CMakeFiles/stb_image.dir/src/stb_image.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/stb_image.c -o CMakeFiles/stb_image.dir/src/stb_image.c.s
 
 # Object files for target stb_image
 stb_image_OBJECTS = \
@@ -93,7 +93,7 @@ stb_image_EXTERNAL_OBJECTS =
 libstb_image.a: CMakeFiles/stb_image.dir/src/stb_image.c.o
 libstb_image.a: CMakeFiles/stb_image.dir/build.make
 libstb_image.a: CMakeFiles/stb_image.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libstb_image.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/olivier/Git/APP1-S6/GIF643-Proto-E22/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libstb_image.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/stb_image.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stb_image.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/stb_image.dir/clean:
 .PHONY : CMakeFiles/stb_image.dir/clean
 
 CMakeFiles/stb_image.dir/depend:
-	cd /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22 /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22 /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/stb_image.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/olivier/Git/APP1-S6/GIF643-Proto-E22 /home/olivier/Git/APP1-S6/GIF643-Proto-E22 /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build/CMakeFiles/stb_image.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/stb_image.dir/depend
 

@@ -57,10 +57,10 @@ RM = /snap/cmake/1082/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22
+CMAKE_SOURCE_DIR = /home/olivier/Git/APP1-S6/GIF643-Proto-E22
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build
+CMAKE_BINARY_DIR = /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build/CMakeFiles /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/olivier/Git/APP1-S6/GIF643-Proto-E22/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -156,6 +156,19 @@ asset_conv/fast:
 .PHONY : asset_conv/fast
 
 #=============================================================================
+# Target rules for targets named asset_conv_original
+
+# Build rule for target.
+asset_conv_original: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 asset_conv_original
+.PHONY : asset_conv_original
+
+# fast build rule for target.
+asset_conv_original/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_conv_original.dir/build.make CMakeFiles/asset_conv_original.dir/build
+.PHONY : asset_conv_original/fast
+
+#=============================================================================
 # Target rules for targets named lab_ex1
 
 # Build rule for target.
@@ -217,6 +230,30 @@ src/asset_conv.s: src/asset_conv.cpp.s
 src/asset_conv.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_conv.dir/build.make CMakeFiles/asset_conv.dir/src/asset_conv.cpp.s
 .PHONY : src/asset_conv.cpp.s
+
+src/asset_conv_original.o: src/asset_conv_original.cpp.o
+.PHONY : src/asset_conv_original.o
+
+# target to build an object file
+src/asset_conv_original.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_conv_original.dir/build.make CMakeFiles/asset_conv_original.dir/src/asset_conv_original.cpp.o
+.PHONY : src/asset_conv_original.cpp.o
+
+src/asset_conv_original.i: src/asset_conv_original.cpp.i
+.PHONY : src/asset_conv_original.i
+
+# target to preprocess a source file
+src/asset_conv_original.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_conv_original.dir/build.make CMakeFiles/asset_conv_original.dir/src/asset_conv_original.cpp.i
+.PHONY : src/asset_conv_original.cpp.i
+
+src/asset_conv_original.s: src/asset_conv_original.cpp.s
+.PHONY : src/asset_conv_original.s
+
+# target to generate assembly for a file
+src/asset_conv_original.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/asset_conv_original.dir/build.make CMakeFiles/asset_conv_original.dir/src/asset_conv_original.cpp.s
+.PHONY : src/asset_conv_original.cpp.s
 
 src/lab_ex1.o: src/lab_ex1.cpp.o
 .PHONY : src/lab_ex1.o
@@ -347,6 +384,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... asset_conv"
+	@echo "... asset_conv_original"
 	@echo "... lab_ex1"
 	@echo "... lab_ex2"
 	@echo "... lab_ex3"
@@ -355,6 +393,9 @@ help:
 	@echo "... src/asset_conv.o"
 	@echo "... src/asset_conv.i"
 	@echo "... src/asset_conv.s"
+	@echo "... src/asset_conv_original.o"
+	@echo "... src/asset_conv_original.i"
+	@echo "... src/asset_conv_original.s"
 	@echo "... src/lab_ex1.o"
 	@echo "... src/lab_ex1.i"
 	@echo "... src/lab_ex1.s"

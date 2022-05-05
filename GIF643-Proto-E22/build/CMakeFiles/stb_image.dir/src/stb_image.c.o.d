@@ -1,7 +1,7 @@
 CMakeFiles/stb_image.dir/src/stb_image.c.o: \
- /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/stb_image.c \
+ /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/stb_image.c \
  /usr/include/stdc-predef.h \
- /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/stb/stb_image_write.h \
+ /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/stb/stb_image_write.h \
  /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \

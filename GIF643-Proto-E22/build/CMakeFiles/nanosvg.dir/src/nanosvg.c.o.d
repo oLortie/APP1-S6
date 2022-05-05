@@ -1,5 +1,5 @@
 CMakeFiles/nanosvg.dir/src/nanosvg.c.o: \
- /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/nanosvg.c \
+ /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/nanosvg.c \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -21,7 +21,7 @@ CMakeFiles/nanosvg.dir/src/nanosvg.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/nanosvg/nanosvg.h \
+ /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/nanosvg/nanosvg.h \
  /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
@@ -59,4 +59,4 @@ CMakeFiles/nanosvg.dir/src/nanosvg.c.o: \
  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/src/nanosvg/nanosvgrast.h
+ /home/olivier/Git/APP1-S6/GIF643-Proto-E22/src/nanosvg/nanosvgrast.h
