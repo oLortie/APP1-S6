@@ -174,4 +174,6 @@ CMakeFiles/asset_conv.dir/src/asset_conv.cpp.o: \
  /usr/include/string.h /usr/include/strings.h /usr/include/c++/8/thread \
  /usr/include/c++/8/chrono /usr/include/c++/8/ratio \
  /usr/include/c++/8/limits /usr/include/c++/8/ctime \
- /usr/include/c++/8/bits/parse_numbers.h
+ /usr/include/c++/8/bits/parse_numbers.h \
+ /usr/include/c++/8/condition_variable \
+ /usr/include/c++/8/bits/std_mutex.h

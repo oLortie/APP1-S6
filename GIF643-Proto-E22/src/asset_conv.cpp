@@ -12,6 +12,7 @@
 #include <string>
 #include <cstring>
 #include <thread>
+#include <condition_variable>
 
 namespace gif643 {
 
@@ -216,6 +217,8 @@ private:
                                 // threads.
 
     std::vector<std::thread> queue_threads_;
+    std::condition_variable data_cond;
+    std::mutex mut;
 
 public:
     /// \brief Default constructor.
@@ -292,14 +295,14 @@ public:
     ///
     /// The parsing method will output error messages if it is not valid. 
     /// Nothing occurs if it's the case.
-    void parseAndRun(const std::string& line_org)
+    /*void parseAndRun(const std::string& line_org)
     {
         TaskDef def;
         if (parse(line_org, def)) {
             TaskRunner runner(def);
             runner();
         }
-    }
+    }*/
 
     /// \brief Parse the task definition and put it in the processing queue.
     ///
@@ -310,8 +313,10 @@ public:
         std::queue<TaskDef> queue;
         TaskDef def;
         if (parse(line_org, def)) {
+            std::lock_guard<std::mutex> lk(mut);
             std::cerr << "Queueing task '" << line_org << "'." << std::endl;
             task_queue_.push(def);
+            data_cond.notify_one();
         }
     }
 
@@ -326,12 +331,15 @@ private:
     void processQueue()
     {
         while (should_run_) {
-            if (!task_queue_.empty()) {
-                TaskDef task_def = task_queue_.front();
-                task_queue_.pop();
-                TaskRunner runner(task_def);
-                runner();
-            }
+            // TODO: ajouter le wait à la place du if et ajouter un unique lock
+            std::unique_lock<std::mutex> lk(mut);
+            data_cond.wait(lk, [this]{return !task_queue_.empty();});
+
+            TaskDef task_def = task_queue_.front();
+            task_queue_.pop();
+            lk.unlock();
+            TaskRunner runner(task_def);
+            runner();
         }
     }
 };
@@ -343,6 +351,7 @@ int main(int argc, char** argv)
     using namespace gif643;
 
     std::ifstream file_in;
+    int nb_threads = NUM_THREADS;
 
     if (argc >= 2 && (strcmp(argv[1], "-") != 0)) {
         file_in.open(argv[1]);
@@ -355,12 +364,16 @@ int main(int argc, char** argv)
                         << "', using stdin (press CTRL-D for EOF)." 
                         << std::endl;
         }
+        if (argv[2] != nullptr) 
+        {
+            nb_threads = atoi(argv[2]);
+        }
     } else {
         std::cerr << "Using stdin (press CTRL-D for EOF)." << std::endl;
     }
 
     // TODO: change the number of threads from args.
-    Processor proc;
+    Processor proc(nb_threads);
     
     while (!std::cin.eof()) {
 
