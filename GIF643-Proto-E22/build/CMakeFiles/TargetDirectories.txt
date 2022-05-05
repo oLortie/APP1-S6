@@ -1,0 +1,8 @@
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/nanosvg.dir
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/stb_image.dir
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/asset_conv.dir
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/lab_ex1.dir
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/lab_ex2.dir
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/lab_ex3.dir
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/edit_cache.dir
+/home/olivier/Documents/UdeS-E22/APP1/GIF643-Proto-E22/build/CMakeFiles/rebuild_cache.dir
