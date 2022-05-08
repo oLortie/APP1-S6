@@ -2,22 +2,52 @@
 #include <iostream>
 
 using namespace std;
+using V4D = vector<vector<vector<vector<float>>>>;
 
-vector<float> curl_E(vector<float> E)
+void showV4D(V4D v)
 {
-    vector<float> curlE;
+    for(int i = 0; i < 100; i++)
+    {
+        for(int j = 0; j < 100; j++)
+        {
+            for(int k = 0; k < 100; k++)
+            {
+                for(int l = 0; l < 3; l++)
+                {
+                    cout << v[i][j][k][l];
+                }
+            }
+
+            cout << endl;
+        }
+
+        cout << endl;
+    }
+
+    cout << endl;
+}
+
+
+V4D curl_E(V4D E)
+{
+    V4D curlE(100, vector<vector<vector<float>>>(100, vector<vector<float>>(100, vector<float>(3, 0))));
+
+    //V4D v1(E[0][1][0][2], E[99][99][99][2]);
+
+
+    //showV4D(v1);
 
     return curlE;
 }
 
-vector<float> curl_H(vector<float> H)
+V4D curl_H(V4D H)
 {
-    vector<float> curlH;
+    V4D curlH(100, vector<vector<vector<float>>>(100, vector<vector<float>>(100, vector<float>(3, 0))));
 
     return curlH;
 }
 
-int timestep(vector<float> E, vector<float> H, float courantNumber, int sourcePos, int sourceVal)
+int timestep(V4D E, V4D H, float courantNumber, int sourcePos, int sourceVal)
 {
     return 0;
 }
@@ -25,4 +55,7 @@ int timestep(vector<float> E, vector<float> H, float courantNumber, int sourcePo
 int main(int argc, char** argv)
 {
     cout << "allo" << endl;
+    //timestep((100,100, 100), 0.1, "wtf");
+
+    //curl_E();
 }
