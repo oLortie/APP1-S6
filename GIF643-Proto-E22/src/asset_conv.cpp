@@ -210,7 +210,7 @@ private:
     std::queue<TaskDef> task_queue_;
 
     // The cache hash map (TODO). Note that we use the string definition as the // key.
-    using PNGHashMap = std::unordered_map<std::string, PNGDataPtr>;
+    using PNGHashMap = std::unordered_map<std::string, int>;
     PNGHashMap png_cache_;
 
     bool should_run_;           // Used to signal the end of the processor to
@@ -315,8 +315,16 @@ public:
         if (parse(line_org, def)) {
             std::lock_guard<std::mutex> lk(mut);
             std::cerr << "Queueing task '" << line_org << "'." << std::endl;
-            task_queue_.push(def);
-            data_cond.notify_one();
+            if (png_cache_.count(line_org) == 0)
+            {
+                task_queue_.push(def);
+                data_cond.notify_one();
+                png_cache_.insert({line_org, 0});
+            }
+            else
+            {
+                std::cout << "Task already in png cache!" << std::endl;
+            }
         }
     }
 
