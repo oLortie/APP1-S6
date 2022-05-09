@@ -382,6 +382,7 @@ int main(int argc, char** argv)
     }
 
     // TODO: change the number of threads from args.
+    std::cout << "Nb. threads: " << nb_threads << std::endl;
     Processor proc(nb_threads);
     
     while (!std::cin.eof()) {
