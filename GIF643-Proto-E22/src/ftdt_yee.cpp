@@ -3,59 +3,19 @@
 #include "eigen-3.4.0/Eigen/Dense"
 
 using namespace std;
-using V4D = vector<vector<vector<vector<float>>>>;
-using V3D = vector<vector<vector<float>>>;
-using V2D = vector<vector<float>>;
-using Eigen::MatrixXf;
-using Eigen::Matrix4f;
-
-void showV4D(V4D v)
-{
-    for(int i = 0; i < 100; i++)
-    {
-        for(int j = 0; j < 100; j++)
-        {
-            for(int k = 0; k < 100; k++)
-            {
-                for(int l = 0; l < 3; l++)
-                {
-                    cout << v[i][j][k][l];
-                }
-            }
-
-            cout << endl;
-        }
-
-        cout << endl;
-    }
-
-    cout << endl;
-}
-
-void showV2D(V2D v)
-{
-    for(int i = 0; i < 4; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            cout << v[i][j];
-        }
-
-        cout << endl;
-    }
-
-    cout << endl;
-}
 
 void printVector(vector<float> v)
 {
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < v.size(); i++)
     {
-        cout << v[i] << endl;
+        if(true/*v[i] <= 20100 && v[i] >= 19800*/)
+        {
+            cout << v[i] << endl;
+        }
     }
 }
 
-template<typename T>
+/*template<typename T>
 std::vector<T> slice(std::vector<T> const &v, int m, int n)
 {
     // m et n inclusivement
@@ -64,48 +24,73 @@ std::vector<T> slice(std::vector<T> const &v, int m, int n)
  
     std::vector<T> vec(first, last);
     return vec;
-}
+}*/
 
-vector<float> curl_E(/*vector<float> E*/)
+std::vector<float> slice(std::vector<float> const &v, bool face, int dimension)
 {
-    //V4D curlE(100, vector<vector<vector<float>>>(100, vector<vector<float>>(100, vector<float>(3, 0))));
+    vector<float> vec = v;
 
-    //V4D v1(E[0][1][0][2], E[99][99][99][2]);
-    //V4D v1 = slice(slice(slice(slice(curlE[0][0], 0, 3), 1, 99), 0, 99), 2, 2);
-    
-    /*V4D v1 = slice(curlE, 0, 99);
-    V3D v2 = slice(v1[0], 0, 3);
-    V2D v3 = slice(v2[0][0], 0, 3);
-    vector<float> v3 = slice(v3[0][0][0], 0, 3);*/
-
-    //showV2D(v2);
-
-    vector<float> curlE(3000000, 0);
-
-    /*for(int i = 0; i < 1000000; i++)
+    switch(dimension)
     {
-        curlE[i] += E[i + 2000000] - E[i + 2000000];
+        case 0: // enlève 10000 donnée par bon de 1000000
+            face ? vec.erase(vec.cbegin(), vec.cbegin() + 10000) : vec.erase(vec.cend() - 10000, vec.cend());
+            break;
+
+        case 1: // enlève 1 donnée par bon de 100 et itération à l'envers pour pas fuck-up l'ordre du vecteur
+            for(int i = 9999; i > -1; i--)
+            {
+                face ? vec.erase(vec.cbegin() + 100 * i) : vec.erase(vec.cbegin() + 99 + 100 * i);
+            }
+            break;
+            
+        case 2: // enlève 100 donnée par bon de 10000 et itération à l'envers pour pas fuck-up l'ordre du vecteur
+            for(int i = 99; i > -1; i--)
+            {
+                face ? vec.erase(vec.cbegin() + 10000 * i, vec.cbegin() + 100 + 10000 * i) : vec.erase(vec.cbegin() + 9900 + 10000 * i, vec.cbegin() + 10000 + 10000 * i);
+            }
+            break;
     }
 
-    curlE[i] += E[i + 2000000] - E[i + 2000000];*/
+    //printVector(vec);
 
-    //curlE.insert(curlE.cbegin(), begin(E), begin(E)+1000000);
+    return vec;
+}
 
-    //printVector(curlE);
+vector<float> curl_E(vector<float> const &E)
+{
+    vector<float> curlE(3000000, 0);
+
+    // !! mettre la dimension 2 (de 2m à 3m) dans le E
+    auto v1 = slice(E, true, 1);
+    auto v2 = slice(E, false, 1);
+
+    for(int i = 0; i < 100; i++)
+    {
+        for(int j = 0; j < 100; j++)
+        {
+            
+        }
+    }
 
 
 
 
+    /*int j = 0;
 
+    for(int i = 1; i <= 100; i++)
+    {
+        j += 100;
 
-
-
-
+        for(;j < i * 100; j++)
+        {
+            
+        }
+    }*/
 
     return curlE;
 }
 
-V4D curl_H(V4D H)
+/*V4D curl_H(V4D H)
 {
     V4D curlH(100, vector<vector<vector<float>>>(100, vector<vector<float>>(100, vector<float>(3, 0))));
 
@@ -115,12 +100,16 @@ V4D curl_H(V4D H)
 int timestep(V4D E, V4D H, float courantNumber, int sourcePos, int sourceVal)
 {
     return 0;
-}
+}*/
 
 int main(int argc, char** argv)
 {
-    cout << "allo" << endl;
-    //timestep((100,100, 100), 0.1, "wtf");
+    vector<float> curlE;
+    
+    for(int i = 0; i < 1000000; i++)
+    {
+        curlE.push_back(i);
+    }
 
-    curl_E();
+    slice(curlE, true, 1);
 }
