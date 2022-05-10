@@ -5,8 +5,8 @@ import os
 import subprocess
 import sys
 
-NUM_PROCESSES = 4
-NUM_THREADS = 4
+NUM_PROCESSES = 2
+NUM_THREADS = 2
 
 def run_process(task_desc):
     p = subprocess.Popen(["../build/asset_conv", str(NUM_THREADS)], stdin=subprocess.PIPE)

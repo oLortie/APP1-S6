@@ -98,4 +98,4 @@ if __name__ == "__main__":
         for y in range(100):
             for z in range(100):
                 # affichage marche pas tout à fait !!
-                print(str(x) + str(y) + str(z) + ": " + str(v[0][x][y][z]) + ": " + str(v[1][x][y][z]) + ": " + str(v[2][x][y][z]))
+                print(str(10000*x+100*y+z) + ": " + str(v[0][x][y][z]) + ": " + str(v[1][x][y][z]) + ": " + str(v[2][x][y][z]))
