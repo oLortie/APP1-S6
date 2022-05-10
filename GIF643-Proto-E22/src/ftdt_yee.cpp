@@ -6,25 +6,24 @@ using namespace std;
 
 void printVector(vector<float> v)
 {
-    for(int i = 0; i < v.size(); i++)
+    for(int i = 0; i < v.size() / 3; i++)
     {
         if(true/*v[i] <= 20100 && v[i] >= 19800*/)
         {
-            cout << v[i] << endl;
+            cout << i << ": " << v[i] << " " << v[i + 1000000] << " " << v[i + 2000000] << endl;
         }
     }
 }
 
-/*template<typename T>
-std::vector<T> slice(std::vector<T> const &v, int m, int n)
+std::vector<float> sliceCurl(std::vector<float> const &v, int m, int n)
 {
     // m et n inclusivement
     auto first = v.cbegin() + m;
     auto last = v.cbegin() + n + 1;
  
-    std::vector<T> vec(first, last);
+    std::vector<float> vec(first, last);
     return vec;
-}*/
+}
 
 std::vector<float> slice(std::vector<float> const &v, bool face, int dimension)
 {
@@ -51,8 +50,6 @@ std::vector<float> slice(std::vector<float> const &v, bool face, int dimension)
             break;
     }
 
-    //printVector(vec);
-
     return vec;
 }
 
@@ -61,31 +58,80 @@ vector<float> curl_E(vector<float> const &E)
     vector<float> curlE(3000000, 0);
 
     // !! mettre la dimension 2 (de 2m à 3m) dans le E
-    auto v1 = slice(E, true, 1);
-    auto v2 = slice(E, false, 1);
+    auto E1 = sliceCurl(E, 2000000, 2999999);
+    auto v1 = slice(E1, true, 1);
+    auto v2 = slice(E1, false, 1);
 
-    for(int i = 0; i < 100; i++)
+    // !! mettre la dimension 0 (de 0m à 1m) dans le E
+    auto E6 = sliceCurl(E, 0, 999999);
+    auto v11 = slice(E6, true, 1);
+    auto v12 = slice(E6, false, 1);
+
+    int j = 0;
+    int k = 0;
+
+    for(int i = 0; i < 1000000; i++)
     {
-        for(int j = 0; j < 100; j++)
+        curlE[i] += v1[i - k] - v2[i - k];
+        curlE[i + 2000000] += v11[i - k] - v12[i - k];
+
+        if(j == 98)
         {
-            
+            k++;
+            i++;
+            j = 0;
+        }
+        else
+        {
+            j++;
         }
     }
 
+    // !! mettre la dimension 1 (de 1m à 2m) dans le E
+    auto E2 = sliceCurl(E, 1000000, 1999999);
+    auto v3 = slice(E2, true, 2);
+    auto v4 = slice(E2, false, 2);
 
+    // !! mettre la dimension 0 (de 0m à 1m) dans le E
+    auto E3 = sliceCurl(E, 0, 999999);
+    auto v5 = slice(E3, true, 2);
+    auto v6 = slice(E3, false, 2);
 
+    j = 0;
+    k = 0;
 
-    /*int j = 0;
-
-    for(int i = 1; i <= 100; i++)
+    for(int i = 0; i < 1000000; i++)
     {
-        j += 100;
+        curlE[i] -= v3[i - k] - v4[i - k];
+        curlE[i + 1000000] += v5[i - k] - v6[i - k];
 
-        for(;j < i * 100; j++)
+        if(j == 9899)
         {
-            
+            k += 100;
+            i += 100;
+            j = 0;
         }
-    }*/
+        else
+        {
+            j++;
+        }
+    }
+
+    // !! mettre la dimension 2 (de 2m à 3m) dans le E
+    auto E4 = sliceCurl(E, 2000000, 2999999);
+    auto v7 = slice(E4, true, 2);
+    auto v8 = slice(E4, false, 2);
+
+    // !! mettre la dimension 1 (de 1m à 2m) dans le E
+    auto E5 = sliceCurl(E, 1000000, 1999999);
+    auto v9 = slice(E5, true, 0);
+    auto v10 = slice(E5, false, 0);
+
+    for(int i = 0; i < 990000; i++)
+    {
+        curlE[i + 1000000] += v7[i] - v8[i];
+        curlE[i + 2000000] += v9[i] - v10[i];
+    }
 
     return curlE;
 }
@@ -106,10 +152,10 @@ int main(int argc, char** argv)
 {
     vector<float> curlE;
     
-    for(int i = 0; i < 1000000; i++)
+    for(int i = 0; i < 3000000; i++)
     {
         curlE.push_back(i);
     }
 
-    slice(curlE, true, 1);
+    printVector(curl_E(curlE));
 }
