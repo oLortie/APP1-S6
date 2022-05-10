@@ -70,19 +70,37 @@ class WaveEquation:
 
 
 if __name__ == "__main__":
-    # n = 100
-    # r = 0.01
-    # l = 30
-    #
-    #
-    # def source(index):
-    #     return ([n // 3], [n // 3], [n // 2],[0]), 0.1*numpy.sin(0.1 * index)
-    #
-    #
-    # w = WaveEquation((n, n, n), 0.1, source)
-    # fiddle.fiddle(w, [('field component',{'Ex':0,'Ey':1,'Ez':2, 'Hx':3,'Hy':4,'Hz':5}),('slice',{'XY':2,'YZ':0,'XZ':1}),('slice index',0,n-1,n//2,1)], update_interval=0.01)
+    nb_iterations = 10
+    E = numpy.zeros((100, 100, 100, 3))
+    H = numpy.zeros((100, 100, 100, 3))
 
-    vec = numpy.zeros((3, 100, 100, 100))
+    courant_number = 0.1
+    source_pos = ([33], [33], [50], [0])
+    index = 0
+    source_val = 0
+
+    for i in range(nb_iterations):
+        source_val = 0.1*numpy.sin(0.1*index)
+        index += 1
+        E, H = timestep(E, H, courant_number, source_pos, source_val)
+        print("Iteration done!")
+
+    print(E)
+
+    """n = 100
+    r = 0.01
+    l = 30
+    
+    
+    def source(index):
+         return ([n // 3], [n // 3], [n // 2],[0]), 0.1*numpy.sin(0.1 * index)
+    
+    
+    w = WaveEquation((n, n, n), 0.1, source)
+    fiddle.fiddle(w, [('field component',{'Ex':0,'Ey':1,'Ez':2, 'Hx':3,'Hy':4,'Hz':5}),('slice',{'XY':2,'YZ':0,'XZ':1}),('slice index',0,n-1,n//2,1)], update_interval=0.01)"""
+    
+
+    """vec = numpy.zeros((3, 100, 100, 100))
     fml = 0
 
     for a in range(3):
@@ -98,4 +116,4 @@ if __name__ == "__main__":
         for y in range(100):
             for z in range(100):
                 # affichage marche pas tout à fait !!
-                print(str(10000*x+100*y+z) + ": " + str(v[0][x][y][z]) + ": " + str(v[1][x][y][z]) + ": " + str(v[2][x][y][z]))
+                print(str(10000*x+100*y+z) + ": " + str(v[0][x][y][z]) + ": " + str(v[1][x][y][z]) + ": " + str(v[2][x][y][z]))"""
