@@ -2,6 +2,7 @@
 
 import numpy, fiddle
 
+
 def curl_E(E):
     curl_E = numpy.zeros(E.shape)
     curl_E[:, :-1, :, 0] += E[:, 1:, :, 2] - E[:, :-1, :, 2]
@@ -13,6 +14,7 @@ def curl_E(E):
     curl_E[:-1, :, :, 2] += E[1:, :, :, 1] - E[:-1, :, :, 1]
     curl_E[:, :-1, :, 2] -= E[:, 1:, :, 0] - E[:, :-1, :, 0]
     return curl_E
+
 
 def curl_H(H):
     curl_H = numpy.zeros(H.shape)
@@ -68,16 +70,32 @@ class WaveEquation:
 
 
 if __name__ == "__main__":
-    n = 100
-    r = 0.01
-    l = 30
+    # n = 100
+    # r = 0.01
+    # l = 30
+    #
+    #
+    # def source(index):
+    #     return ([n // 3], [n // 3], [n // 2],[0]), 0.1*numpy.sin(0.1 * index)
+    #
+    #
+    # w = WaveEquation((n, n, n), 0.1, source)
+    # fiddle.fiddle(w, [('field component',{'Ex':0,'Ey':1,'Ez':2, 'Hx':3,'Hy':4,'Hz':5}),('slice',{'XY':2,'YZ':0,'XZ':1}),('slice index',0,n-1,n//2,1)], update_interval=0.01)
 
+    vec = numpy.zeros((3, 100, 100, 100))
+    fml = 0
 
-    def source(index):
-        return ([n // 3], [n // 3], [n // 2],[0]), 0.1*numpy.sin(0.1 * index)
+    for a in range(3):
+        for x in range(100):
+            for y in range(100):
+                for z in range(100):
+                    vec[a][x][y][z] = fml
+                    fml += 1
 
+    v = curl_E(vec)
 
-    w = WaveEquation((n, n, n), 0.1, source)
-    fiddle.fiddle(w, [('field component',{'Ex':0,'Ey':1,'Ez':2, 'Hx':3,'Hy':4,'Hz':5}),('slice',{'XY':2,'YZ':0,'XZ':1}),('slice index',0,n-1,n//2,1)], update_interval=0.01)
-
-
+    for x in range(100):
+        for y in range(100):
+            for z in range(100):
+                # affichage marche pas tout à fait !!
+                print(str(x) + str(y) + str(z) + ": " + str(v[0][x][y][z]) + ": " + str(v[1][x][y][z]) + ": " + str(v[2][x][y][z]))
