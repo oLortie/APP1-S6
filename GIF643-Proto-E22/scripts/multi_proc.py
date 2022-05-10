@@ -9,7 +9,7 @@ NUM_PROCESSES = 4
 NUM_THREADS = 4
 
 def run_process(task_desc):
-    p = subprocess.Popen(["./asset_conv", str(NUM_THREADS)], stdin=subprocess.PIPE)
+    p = subprocess.Popen(["../build/asset_conv", str(NUM_THREADS)], stdin=subprocess.PIPE)
     p.communicate(input=task_desc.encode())
 
 
